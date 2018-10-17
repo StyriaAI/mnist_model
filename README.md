@@ -46,5 +46,5 @@ NOTE: When S3 integration is enabled, you might see a lot of wierd log messages 
 
 Once you have S3 bucket containing the model set up, you can run the model server with the following command:
 ```
-docker run -e AWS_SECRET_ACCESS_KEY=<secret_access_key> -e AWS_ACCESS_KEY_ID=<access_key_id> -e S3_REGION=<aws_region> -e MODEL_BASE_PATH=s3://<bucket_name>/<prefix> -e MODEL_NAME=mnist tensorflow/serving
+docker run -e AWS_SECRET_ACCESS_KEY=<secret_access_key> -e AWS_ACCESS_KEY_ID=<access_key_id> -e S3_REGION=<aws_region> -e MODEL_BASE_PATH=s3://<bucket_name>/<prefix> -e MODEL_NAME=mnist -p 8500:8500 tensorflow/serving
 ```
