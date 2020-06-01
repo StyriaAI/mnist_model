@@ -24,10 +24,13 @@ Model server is now available on port 8500.
 
 ## Running with environment variables
 
+HINT: If you're creating the containers manually like in the example commands, you will need to specify additional components to connect them. Think on how can they "see" each other network-wise since each
+container by default has its own complete linux namespace, including the network namespace.
+
 Position into the root of this repo and run the following command:
 
 ```
-docker run -e MODEL_BASE_PATH=resources/mnist -e MODEL_NAME=mnist -p 8500:8500 tensorflow/serving:1.8.0
+docker run --mount type=bind,source=$(pwd)/resources/mnist,target=/models/mnist -e MODEL_NAME=mnist -p 8500:8500 tensorflow/serving:1.8.0
 ```
 
 ## Integration with AWS S3
